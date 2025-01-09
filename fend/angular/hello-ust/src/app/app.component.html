@@ -1,0 +1,34 @@
+
+<h3 style="display:flex;justify-content:center;align-items:center">Sports Details</h3>
+
+<div class="card-container" style="display: flex; justify-content: center; flex-wrap: wrap;">
+  <div class="card" style="width: 250px; margin: 15px;"> 
+    <div class="card-body">
+      <app-play [game]="{
+          name:'Cricket',
+          totalPlayers:11,
+          status:'Available'
+      }"></app-play>
+    </div>
+  </div>
+
+  <div class="card" style="width: 250px; margin: 15px;">
+    <div class="card-body">
+      <app-play [game]="{
+          name:'Football',
+          totalPlayers:11,
+          status:'Available'
+      }"></app-play>
+    </div>
+  </div>
+
+  <div class="card" style="width: 250px; margin: 15px;">
+    <div class="card-body">
+      <app-play [game]="{
+          name:'Tennis',
+          totalPlayers:2,
+          status:'Not-Available'
+      }"></app-play>
+    </div>
+  </div>
+</div>
