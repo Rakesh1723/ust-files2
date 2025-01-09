@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        /* table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2; 
+        }*/
+        div{
+            margin-bottom: 10px;
+        }
+      
+    </style>
+    <!-- <script>
+        let readInput=function(){
+            let id=document.getElementById('id').value;
+            document.getElementById('ud1').innerHTML=`hello ${id}`
+            let name=document.getElementById('name').value;
+            document.getElementById('ud2').innerHTML=`hello ${name}`
+            let location=document.getElementById('location').value;
+            document.getElementById('ud3').innerHTML=`hello ${location}`
+            let joindate=document.getElementById('joindate').value;
+            document.getElementById('ud4').innerHTML=`hello ${joindate}`
+        }
+    </script> -->
+
+     <script>
+        let entries = [];
+
+        let readInput = function() {
+            let id = document.getElementById('id').value;
+            let name = document.getElementById('name').value;
+            let location = document.getElementById('location').value;
+            let joindate = document.getElementById('joinDate').value;
+
+            if (id && name && location && joindate) {
+                entries.push({ id, name, location, joindate });
+                displayTable();
+                clearInputs();
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+
+        let displayTable = function() {
+            let tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; // Clear existing entries
+
+            entries.forEach((entry, index) => {
+                let row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${entry.id}</td>
+                    <td>${entry.name}</td>
+                    <td>${entry.location}</td>
+                    <td>${entry.joindate}</td>
+                    <td><button onclick="deleteEntry(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        let deleteEntry = function(index) {
+            if (confirm("Are you sure you want to delete this entry?")) {
+                entries.splice(index, 1);
+                displayTable();
+            }
+        }
+
+        let clearInputs = function() {
+            document.getElementById('id').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('joinDate').value = '';
+        }
+    </script>
+    
+</head>
+<body>
+    <form>
+        <div >
+             <input type="text" name="id" id="id" placeholder="Input your id">
+        </div>
+        <div>
+            <input type="text" name="name" id="name" placeholder="Input your name">
+        </div>
+        <div>
+            <input type="text" name="location" id="location" placeholder="Input your location">
+        </div>
+        <div >
+            <input type="date" name="joindate" id="joinDate" placeholder="Input your joinDate">
+        </div>
+        <div>
+            <button type="button" style="background-color: blue; color: aliceblue;" onclick="readInput()">ADD</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+            <tr rowspan="5" colspan="5" setborder ="5">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Join Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    
+</body>
+</html>
