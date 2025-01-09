@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+        }
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                 <h4 class="text-white">Task Management</h4>
+                  <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="home.html"><h5>Home</h5></a>
+                    </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="task.html"><h5>Tasks</h5></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="home.html"><h5>About</h5></a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+    </header>
+    <main>
+        <form >
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" id="una" placeholder="Enter task name" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control" id="ude" placeholder="Enter task description" required>
+            </div>
+            <button type="submit" onclick="updateTask(event)" class="btn btn-primary" >Submit</button>
+          </form>
+      
+     <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        const baseUrl = "http://localhost:8080/api/v1/tasks";
+
+        async function updateTask(event) { 
+
+            event.preventDefault();
+            
+            const response = await fetch(`${baseUrl}/${id}`);
+            const task = await response.json();
+
+            const newtask = {
+                id:id,
+                name: document.getElementById('una').value, 
+                description: document.getElementById('ude').value,
+                dueDate:task.dueDate,
+                completed:task.completed
+            };
+    
+           await fetch(`${baseUrl}/${id}`, {
+                method: 'PUT',
+                headers: {   
+                   'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newtask)
+               });
+            
+               alert('Task Updated Successfully !');
+
+            }
+
+
+     </script>
+
+    </main>
+    <footer>
+        <div style=" background-color: #343a40;color: white;text-align:center;padding: 10px 0;">
+             <p>&copy;Task Management web app. All rights reserved.</p>
+        </div>
+    </footer> 
+</body>
+</html>

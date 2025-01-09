@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraineeCurd</title>
+</head>
+<body>
+
+    <input type="number" id=id placeholder="enter your id" required>
+    <input type="text" id=name placeholder="enter your name" required>
+    <input type="text" id=location placeholder="enter your location" required>
+    <input type="date" id=date placeholder="enter your date" required>
+    <button onclick="addTrainee()">submit</button>
+    <h2>Trainee List</h2>
+    <div id="trainee-list"></div>
+
+<script>
+
+    const baseUrl = "http://localhost:3000/trainees";
+
+  async function getTrainees() {
+     const response = await fetch(baseUrl);
+     const data = await response.json();
+     console.log(data);
+     return data;
+  }
+
+   async function getTraineeById(id) {
+      const response = await fetch(`${baseUrl}/${id}`);
+      const data = await response.json();
+      return data;
+  }
+
+async function getTraineesByName(name) {
+    const response = await fetch(`${baseUrl}?name=${name}`);
+    const data = await response.json();
+    return data;
+}
+
+async function addTrainee() {
+
+    const trainee = {
+            id:document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            location: document.getElementById('location').value,
+            joinedDate: document.getElementById('date').value,
+        };
+
+    const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(trainee)
+    });
+    loadTrainees();
+}
+
+async function loadTrainees() {
+        const trainees = await getTrainees();
+        displayTrainees(trainees);
+    }
+
+async function deleteTrainee(id) {
+    const response = await fetch(`${baseUrl}/${id}`,
+        {
+            method: 'DELETE'
+        });
+    const data = await response.json();
+    return data;
+}
+
+async function updateTrainee(id, trainee) {
+    
+    
+    
+    const response = await fetch(`${baseUrl}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(trainee)
+    });
+    const data = await response.json();
+    return data;
+}
+
+    // async function readData(){
+    //       let id=document.getElementById('id').value;
+    //       let name=document.getElementById('name').value;
+    //       let location=document.getElementById('location').value;
+    //       let date=document.getElementById('date').value; 
+
+    //       // addTrainee({
+    //       //     "id":id,
+    //       //     "name":name,
+    //       //     "location":location,
+    //       //     "date":date
+    //       // }).then(()=>getTrainees());
+    //       // displayTrainees(getTrainees());
+
+    //       const trainee = {
+    //           "id": id,
+    //           "name": name,
+    //           "location": location,
+    //           "date": date
+    //       };
+
+    //       await addTrainee(trainee);
+    //       const trainees = await getTrainees();
+    //       displayTrainees(trainees);
+    //   }
+
+
+
+function displayTrainees(trainees) {
+  const traineeList = document.getElementById('trainee-list');
+  traineeList.innerHTML = '';
+  trainees.forEach(trainee => {
+          const card = document.createElement('div');
+          card.innerHTML = `
+              <div >
+                  <h5>Name: ${trainee.name}</h5>
+                  <p>ID: ${trainee.id}</p>
+                  <p>Location: ${trainee.location}</p>
+                  <p>Joined Date: ${trainee.joinedDate}</p>
+                  <button onclick="deleteTrainee(${trainee.id})">Delete</button>
+                  <button onclick="updateTrainee(${trainee.id},${trainee})">Update</button>
+              </div>
+          `;
+          traineeList.appendChild(card);
+      });
+
+}
+
+loadTrainees();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  <style>
+.container{
+    display: flex;
+    /* This is for flex Direction */
+
+    /* flex-direction: row; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+
+    /* This is for Justify Content */
+
+    /* justify-content:flex-start;  */
+    /* justify-content:flex-end;  */
+    /* the difference between the row-reverse and flex-end is row-reverse will change the order but flex-end doesnt */
+    /* justify-content: center;  */
+    /* justify-content:space-between; */
+    /* justify-content: space-around  ; */
+    /* justify-content: space-evenly ; */
+
+
+    border: 5px solid black;
+    /* 90% height of the web page */
+    height: 90vh;
+
+    /* flex-wrap properties */
+
+    /* flex-wrap: wrap;  */
+    /* by default it will be no wrap */
+    /* flex-wrap: nowrap; */
+    /* flex-wrap: wrap-reverse; */
+
+
+    /* Align items example */
+
+    /* align-items: flex-start;   */
+      /* align-items: flex-end;   */
+    /* align-items: center;  */
+    /* align-items: baseline;  */
+
+
+    /* combination of properites */
+    /* flex-wrap: wrap; */
+    /* align-items: flex-start; */
+    /* align-items: center; */
+    /* align-items: flex-end; */
+     /* justify-content: space-around; */
+    /* justify-content: space-between*/
+    /* justify-content: space-evenly;*/
+
+
+}
+
+.box{
+    width: 150px;
+    height: 150px;
+    font-size: 8em;
+    text-align: center;
+    border-radius: 15px;
+     /* flex-grow: 1;  */
+    /* flex-shrink: 1;  */
+} 
+#box1{
+    /*example for baseline in align-items:  */
+     /* font-size: 2em;  */
+    /* align-self: start; */
+     /* align-self: center; */
+    /* align-self: flex-end;   */
+    /* order: 1;  at the end; */
+    /* order: -1; the beginning; */
+    background-color: rgb(255, 150, 102);
+}
+#box2{
+    /* order: -1; */
+    background-color: rgb(201, 255, 102);
+}
+#box3{
+    background-color: rgb(168, 102, 255);
+}
+#box4{
+    background-color: rgb(102, 237, 255);
+}
+</style>  
+    <title>Flex Box</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <!-- for flex wrap properties -->
+        <!-- <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div> -->
+    </div>
+</body>
+</html>

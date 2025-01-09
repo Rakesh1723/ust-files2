@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flexbox Navigation Bar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Space between logo and links */
+            align-items: center; /* Center items vertically */
+            background-color: rgb(253, 250, 250);
+            padding: 15px 30px;
+        }
+
+        .logo {
+            color: rgb(10, 10, 10);
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center; /* Center text vertically with logo */
+        }
+
+        .logo img {
+            height: 40px; /* Adjust the size as needed */
+            margin-right: 10px; /* Space between logo and text */
+            display: flex;
+            flex-shrink: 1;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex; /* Layout the links in a row */
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        .nav-links li {
+            margin: 0 20px; /* Space between links */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            padding: 10px 15px; /* Add padding for better click area */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .nav-links a:hover {
+            background-color: #2530cf; /* Change background on hover */
+            color: rgb(250, 246, 246); /* Keep text color white */
+        }
+
+        .image-container {
+            width: 100%; /* Full width */
+            height:100%;
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: 100%; /* Maintain aspect ratio */
+            display:flex; /* Remove any gaps below the image */
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack items on small screens */
+                align-items: flex-start; /* Align items to the start */
+            }
+
+            .nav-links {
+                width: 100%; /* Full width for links */
+                justify-content: space-around; /* Space evenly in row */
+            }
+
+            .nav-links li {
+                margin: 10px 0; /* Vertical spacing for stacked layout */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://cdn.brandfetch.io/ust-global.com/fallback/transparent/theme/dark/h/512/w/512/icon?t=1719492947661" alt="Logo" />
+            </a>
+            UST Global
+        </div>
+        <ul class="nav-links">
+            <li><a href="https://www.ust.com/">Home</a></li>
+            <li><a href="https://www.ust.com/">About</a></li>
+            <li><a href="https://www.ust.com/">Services</a></li>
+            <li><a href="https://www.ust.com/">Contact</a></li>
+        </ul>
+    </nav>
+
+     
+    <div class="image-container">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Campus_photograph_in_Trivandrum.jpg/450px-Campus_photograph_in_Trivandrum.jpg" alt="High-Resolution Placeholder Image">
+    </div>
+
+</body>
+</html>
+
+

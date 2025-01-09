@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Complete Assignment",
+      "description": "Finish the HTML, CSS, Bootstrap, and JS task",
+      "dueDate": "2024-09-28",
+      "completed": "false"
+    },
+    {
+      "id": "2",
+      "name": "Play Cricket",
+      "description": "Reach the turf on time tonight to play cricket",
+      "dueDate": "2024-09-28",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "name": "Plan Weekend",
+      "description": "Decide on activities for the upcoming weekend",
+      "dueDate": "2024-09-29",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "name": "chess",
+      "description": "play",
+      "dueDate": "2024-09-27",
+      "completed": "true"
+    },
+    {
+      "id": "5",
+      "name": "movie",
+      "description": "watch",
+      "dueDate": "2024-09-30",
+      "completed": "true"
+    }
+  ]
+}
