@@ -1,0 +1,15 @@
+<div class="col-12">
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="number" class="form-control" id="id" name="id" #tid>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" #tname>
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" name="price" #tprice>
+        <button class="btn btn-primary" style="margin-top: 10px;margin-bottom: 10px;" (click)="addProduct(tid.value,tname.value,tprice.value)">Add Product</button>  
+    </div>
+    </div>
+    <div class="col-12">
+        <app-cartview [productList]="productList"></app-cartview>
+    </div>
+    
