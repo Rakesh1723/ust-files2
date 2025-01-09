@@ -1,0 +1,48 @@
+<form (submit)="addTodos(todoForm.value)" [formGroup]="todoForm">
+    <div class="form-row">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control" 
+          formControlName="title"
+          [class.is-invalid]="todoForm.get('title').invalid &&todoForm.get('title').touched"
+          [class.is-valid]="todoForm.get('title').valid && todoForm.get('title').touched"
+          />
+          <small *ngIf="todoForm.get('title').invalid && todoForm.get('title').touched">
+             <span *ngIf="todoForm.get('title').errors?.['required']" class="text-danger">Title is Required</span>
+             <span *ngIf="todoForm.get('title').errors?.['pattern']" class="text-danger">Invalid title</span>
+          </small>
+    </div>
+
+    <div class="form-row">
+        <label for="status">Status</label>
+        <select name="status" id="status" class="form-control"
+          formControlName="status"
+          [class.is-invalid]="todoForm.get('status').invalid && todoForm.get('status').touched"
+          [class.is-valid]="todoForm.get('status').valid && todoForm.get('status').touched"
+        >
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        </select>
+         
+        <small *ngIf="todoForm.get('status').invalid && todoForm.get('status').touched" class="text-danger">Status is Required</small>
+    </div>
+
+    <!-- <div class="form-row">
+        <label for="dueDate">DueDate</label>
+        <input type="date" name="dueDate" id="dueDate" class="form-control"
+          formControlName="dueDate"
+          [class.is-invalid]="todoForm.get('dueDate').invalid && todoForm.get('dueDate').touched"
+          [class.is-valid]="todoForm.get('dueDate').valid && todoForm.get('dueDate').touched"
+          />
+          <small *ngIf="todoForm.get('dueDate').invalid && todoForm.get('dueDate').touched">
+             <span *ngIf="todoForm.get('dueDate').errors?.['required']" class="text-danger">DueDate is Required</span>
+          </small>
+    </div> -->
+
+    <div class="form-row">
+        <button [disabled]="todoForm.invalid" type="submit" class="btn btn-primary mt-2">Save Todo</button>
+        <button type="reset" class="btn btn-dark mt-2 mx-2">Reset</button>
+    </div>
+
+</form>
+
+<!-- <p>{{todoForm.value|json}}</p> -->

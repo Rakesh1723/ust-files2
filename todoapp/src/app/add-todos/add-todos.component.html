@@ -1,0 +1,52 @@
+<form (submit)="addTodos(todoForm.value)" #todoForm="ngForm">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control"
+          ngModel pattern="[a-zA-Z0-9]{3,}" required #titleText="ngModel"
+          [class.is-invalid]="titleText.invalid && titleText.touched"
+          [class.is-valid]="titleText.valid && titleText.touched"
+          />
+          <small *ngIf="titleText.invalid && titleText.touched">
+             <span *ngIf="titleText.errors?.['required']" class="text-danger">Title is Required</span>
+             <span *ngIf="titleText.errors?.['pattern']" class="text-danger">Invalid title</span>
+          </small>
+    </div>
+
+    <div class="form-group">
+        <label for="status">Status</label>
+        <!-- <input type="text" name="status" id="status" class="form-control"
+          ngModel required #statusText="ngModel"
+          [class.is-invalid]="statusText.invalid && statusText.touched"
+          [class.is-valid]="statusText.valid && statusText.touched"
+        /> -->
+        <select name="status" id="status" class="form-control"
+          ngModel required #statusText="ngModel"
+          [class.is-invalid]="statusText.invalid && statusText.touched"
+          [class.is-valid]="statusText.valid && statusText.touched"
+        >
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        </select>
+         
+        <small *ngIf="statusText.invalid && statusText.touched" class="text-danger">Status is Required</small>
+    </div>
+
+    <div class="form-group">
+        <label for="dueDate">DueDate</label>
+        <input type="date" name="dueDate" id="dueDate" class="form-control"
+          ngModel required #dueDate="ngModel"
+          [class.is-invalid]="dueDate.invalid && dueDate.touched"
+          [class.is-valid]="dueDate.valid && dueDate.touched"
+          />
+          <small *ngIf="dueDate.invalid && dueDate.touched">
+             <span *ngIf="dueDate.errors?.['required']" class="text-danger">DueDate is Required</span>
+          </small>
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="todoForm.invalid" type="submit" class="btn btn-primary mt-2">Save Todo</button>
+        <button type="reset" class="btn btn-dark mt-2 mx-2">Reset</button>
+        <button type="button" (click)="printTodos()" class="btn btn-success">Print All Todos</button>
+    </div>
+
+</form>

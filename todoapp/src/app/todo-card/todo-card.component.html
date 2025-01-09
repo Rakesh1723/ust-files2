@@ -1,0 +1,18 @@
+<!-- <div class="card" style="width: 18rem;" [ngClass]="{ 'bg-success': todo?.status === 'completed', 'bg-warning': todo?.status === 'pending' }"> -->
+    <div class="card-body" >
+      <h5 *ngIf="todo" class="card-title">{{todo?.title|titlecase}}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{todo?.status|titlecase}}</h6>
+      <a routerLink="/view/{{todo?.id}}" class="btn btn-dark  mx-2">Details</a>
+      <!-- <button class="btn btn-dark mx-2" (click)="updateTodo(todo!)">Update</button> -->
+      <a (click)="toggleUpdate()" class="btn btn-dark  mx-2">Update</a>
+
+      <button class="btn btn-danger mx-2 mt-2" (click)="deleteTodo(todo?.title || '')">Delete</button>
+    </div>
+
+    <div *ngIf="isUpdating" class="card">
+      <div class="card-body">
+       <app-update-todos [todo]="todo"></app-update-todos>
+    </div>
+
+<!-- </div> -->
+

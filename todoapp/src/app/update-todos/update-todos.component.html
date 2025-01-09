@@ -1,0 +1,19 @@
+<form [formGroup]="toUpdateForm" (ngSubmit)="updateTodo(toUpdateForm.value)">  
+    <div class="form-row">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" class="form-control"
+        formControlName="title">
+    </div>
+    <div class="form-row">
+        <label for="status" class="form-label">Status</label>
+        <input type="text" name="status" id="status" class="form-control"
+        formControlName="status">
+            </div>
+    
+    <div class="form-row">
+        <button [disabled]="toUpdateForm.invalid" type="submit" class="btn btn-success mt-2 mx-2">Save Todo</button>
+        <button type="reset" class="btn btn-dark mt-2">Reset</button>
+    </div>
+
+</form>
+

@@ -1,0 +1,9 @@
+/* src/app/footer/footer.component.css */
+.footer {
+    background-color: #343a40; /* Dark background */
+    text-align: center;
+    padding: 15px;
+    color: white;
+  }
+  
+  
